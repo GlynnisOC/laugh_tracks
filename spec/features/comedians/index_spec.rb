@@ -20,12 +20,14 @@ RSpec.describe 'comedians index page', type: :feature do
     expect(page).to have_content(@davecspecial1.name)
     expect(page).to have_xpath("//img[@src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTII3JGyHZiZx-tRsKYcDk8jotJ6kK6yGNiCof1mLfTw5DxekFZtg']")
   end
-end
 
-# As a visitor
-# When I visit `/comedians`
-# I see a thumbnail image for each comedian
-#
-# - Image locations (URLs) can be stored in the database as a string.
-# - Use the image URLs from IMDB or other online source for the special
-# - Use CSS styling to scale the image smaller if needed to fit on the page
+  it "user can find comedians by age" do
+    @chrisr = Comedian.create!(name: "Chris Rock", age: 53, birthplace: "Andrews, SC", image_url: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/02/14/14/chris-rock-netflix.jpg?w968")
+    @toms = Comedian.create!(name: "Tom Segura", age: 34, birthplace: "Cincinnati, OH", image_url: "https://pixel.nymag.com/imgs/daily/vulture/2018/07/12/splitsider/879409292.w700.h467.2x.jpg")
+
+    visit '/comedians?age=34'
+
+    expect(page).to have_content("Age: #{@toms.age}")
+    expect(page).to have_no_content("Age: #{@chrisr.age}")
+  end
+end
