@@ -13,12 +13,14 @@ RSpec.describe 'comedians index page', type: :feature do
     @tomsspecial2 = @toms.specials.create(name: "Completely Normal", runtime_mins: 74, image_url: "https://m.media-amazon.com/images/M/MV5BMTcyODE0Mzk1Nl5BMl5BanBnXkFtZTgwMDk4ODE0NDE@._V1_.jpg")
 
     visit '/comedians'
+    # save_and_open_page
 
     expect(page).to have_content("Name: #{@davec.name}")
     expect(page).to have_content("Name: #{@chrisr.name}")
     expect(page).to have_content("Age: #{@toms.age}")
     expect(page).to have_content(@davecspecial1.name)
     expect(page).to have_xpath("//img[@src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTII3JGyHZiZx-tRsKYcDk8jotJ6kK6yGNiCof1mLfTw5DxekFZtg']")
+    expect(page).to have_content("Specials Count: #{@davec.specials.count}")
   end
 
   it "user can find comedians by age" do
