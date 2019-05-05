@@ -13,7 +13,6 @@ RSpec.describe 'comedians index page', type: :feature do
     @tomsspecial2 = @toms.specials.create(name: "Completely Normal", runtime_mins: 74, image_url: "https://m.media-amazon.com/images/M/MV5BMTcyODE0Mzk1Nl5BMl5BanBnXkFtZTgwMDk4ODE0NDE@._V1_.jpg")
 
     visit '/comedians'
-    save_and_open_page
 
     expect(page).to have_content("Name: #{@davec.name}")
     expect(page).to have_content("Name: #{@chrisr.name}")
