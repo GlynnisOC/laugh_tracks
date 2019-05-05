@@ -1,7 +1,13 @@
 <h1>Comedians</h1>
 
 <% @comedians.each do |comedian| %>
+  <img src="<%= comedian.image_url %>"</img>
   <h3>Name: <%= comedian.name %></h3>
   <h4>Age: <%= comedian.age %></h4>
   <h4>Birthplace: <%= comedian.birthplace %></h4>
+  <h4>Specials: </h4>
+    <% comedian.specials.each do |special| %>
+      <h5><%= special.name %></h5>
+      <h5>Run Time: <%= special.runtime_mins %></h5>
+    <% end %>
 <% end %>
