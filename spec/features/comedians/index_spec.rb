@@ -13,6 +13,7 @@ RSpec.describe 'comedians index page', type: :feature do
     @tomsspecial2 = @toms.specials.create(name: "Completely Normal", runtime_mins: 74, image_url: "https://m.media-amazon.com/images/M/MV5BMTcyODE0Mzk1Nl5BMl5BanBnXkFtZTgwMDk4ODE0NDE@._V1_.jpg")
 
     visit '/comedians'
+    save_and_open_page
 
     expect(page).to have_content("Name: #{@davec.name}")
     expect(page).to have_content("Name: #{@chrisr.name}")
@@ -20,6 +21,7 @@ RSpec.describe 'comedians index page', type: :feature do
     expect(page).to have_content(@davecspecial1.name)
     expect(page).to have_xpath("//img[@src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTII3JGyHZiZx-tRsKYcDk8jotJ6kK6yGNiCof1mLfTw5DxekFZtg']")
     expect(page).to have_content("Specials Count: #{@davec.specials.count}")
+    expect(page).to have_content("Statistics")
   end
 
   it "user can find comedians by age" do
@@ -27,6 +29,7 @@ RSpec.describe 'comedians index page', type: :feature do
     @toms = Comedian.create!(name: "Tom Segura", age: 34, birthplace: "Cincinnati, OH", image_url: "https://pixel.nymag.com/imgs/daily/vulture/2018/07/12/splitsider/879409292.w700.h467.2x.jpg")
 
     visit '/comedians?age=34'
+    save_and_open_page
 
     expect(page).to have_content("Age: #{@toms.age}")
     expect(page).to have_no_content("Age: #{@chrisr.age}")
@@ -34,20 +37,9 @@ RSpec.describe 'comedians index page', type: :feature do
 
   it "user can add a new comedian" do
     visit 'comedians/new'
-    # save_and_open_page
+    save_and_open_page
 
     expect(page).to have_content("Age")
     click_on('Create Comedian')
   end
-
-
-#   User Story 6
-#
-# As a visitor
-# When I visit `/comedians/new`
-# Then I see a form to input a new comedian into the database
-# Including fields for their name, age and city.
-# When the form is successfully submitted and saved,
-# Then I am redirected to `/comedians`
-# And I see the new comedian's data on the page.
 end

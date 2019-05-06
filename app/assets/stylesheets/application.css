@@ -8,15 +8,15 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
  *
  *= require_tree .
  *= require_self
  */
-/* img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 4px;
-  width: 150px;
+ body {
+   background-color: lightblue;
+ }
+ h1 {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: fantasy;
 }
-img { src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTII3JGyHZiZx-tRsKYcDk8jotJ6kK6yGNiCof1mLfTw5DxekFZtg" } */
