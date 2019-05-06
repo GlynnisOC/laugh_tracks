@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="assets/stylesheets/application.css">
+</head>
+<body>
+
 <h1>Comedians</h1>
 
 <% @comedians.each do |comedian| %>
-  <img src="<%= comedian.image_url %>"</img>
+  <img width="200px" border="3px solid" padding="3px" src="<%= comedian.image_url %>"</img>
   <h3>Name: <%= comedian.name %></h3>
   <h4>Age: <%= comedian.age %></h4>
   <h4>Birthplace: <%= comedian.birthplace %></h4>
