@@ -13,7 +13,6 @@ RSpec.describe 'comedians index page', type: :feature do
     @tomsspecial2 = @toms.specials.create(name: "Completely Normal", runtime_mins: 74, image_url: "https://m.media-amazon.com/images/M/MV5BMTcyODE0Mzk1Nl5BMl5BanBnXkFtZTgwMDk4ODE0NDE@._V1_.jpg")
 
     visit '/comedians'
-    # save_and_open_page
 
     expect(page).to have_content("Name: #{@davec.name}")
     expect(page).to have_content("Name: #{@chrisr.name}")
@@ -32,4 +31,23 @@ RSpec.describe 'comedians index page', type: :feature do
     expect(page).to have_content("Age: #{@toms.age}")
     expect(page).to have_no_content("Age: #{@chrisr.age}")
   end
+
+  it "user can add a new comedian" do
+    visit 'comedians/new'
+    # save_and_open_page
+
+    expect(page).to have_content("Age")
+    click_on('Create Comedian')
+  end
+
+
+#   User Story 6
+#
+# As a visitor
+# When I visit `/comedians/new`
+# Then I see a form to input a new comedian into the database
+# Including fields for their name, age and city.
+# When the form is successfully submitted and saved,
+# Then I am redirected to `/comedians`
+# And I see the new comedian's data on the page.
 end
